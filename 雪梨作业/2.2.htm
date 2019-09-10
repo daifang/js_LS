@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       var str = "赵钱孙李周吴郑王冯陈楮卫蒋沈韩杨朱秦尤许何吕施张孔曹严华金魏陶姜";
+        function FindName(name){
+            var i,judge=false;//true代表找到了相同，false代表循环到当前没有找到
+            for (i = 0; i <= str.length ; i++)
+            {
+                if(name==str.charAt(i))
+                {
+                    console.log("查找的姓氏在第 "+(i + 1)+" 位上");
+                    if(i == 0)
+                    {
+                        console.log("该姓氏之前姓氏不存在");
+                        break;
+                    }
+                    console.log("该姓氏之前的姓氏 : "+str.substring(0,i));
+                    judge = true;//一旦查找到相同的姓氏就变true
+                }
+                else if(i == str.length && judge == false)
+                {
+                    console.log('查找不到该姓氏');
+                }
+            }
+        }
+        FindName('赵');
+        FindName('姜');
+        FindName('代');
+    </script>
+</body>
+</html>

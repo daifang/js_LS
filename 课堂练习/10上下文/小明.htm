@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    console.log('小明回家');
+    var xx = ["书桌",'书包','铅笔盒'];
+    console.log('在家-做作业中');
+    function gotoStore(){
+        var yy = ['文具店老板','出售的文具'];
+        console.log('在文具店-买文具中');
+        console.log('在文具店-买文具中   发现没带钱');
+        gotoBank();
+        console.log('在文具店-买好文具  返回家');
+    }
+    function gotoBank(){
+        var zz = ["银行职员", "柜员机"];
+        console.log("在银行 - 取钱  返回文具店");
+
+    } 
+    console.log('在家-写作业中  发现笔没油了');
+    gotoStore();
+    console.log('在家- 继续做作业');  
+</script>
+</html>

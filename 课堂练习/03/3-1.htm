@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //Number
+    //包装,toFixed 保留*位小数四舍五入
+    var num1 = 20.367;
+    console.log(num1.toFixed(2));//输出20.37
+    //同等效果的构造函数
+    var num1 = 20;
+    var numobject = new Number(num1);
+    numobject.toFixed();
+    numobject._proto_==Number.prototype;//true
+    //toPrecision(数字位个数)，四舍五入
+    //数字为个数小于数字的整数位，用e  指数表示
+    //大于或等于数字整数位时直接四舍五入截取
+    var num2 = 123456.78;
+    num2.toPrecision(7);//输出123456.8
+
+    num2.toString(3);//把num2 转换成字符串类型，参数表示进制
+
+
+    //字符串String
+    var str = " 12 3456  ";
+    //fromCharCode();将特定的unicode码转换为对应的字符输出
+    String.fromCharCode(97,98,99);
+    String.fromCharCode.apply();
+    //charCodeAt(index)将参数索引位置的字符转换为unicode码输出
+    str.charCodeAt(0);
+    //slice 切片 slice(start,end)
+    str.slice();
+    //substr() 第一个参数 截取起始位置，第二参数 截取长度
+    str.substr();
+    //substring() 返回参数1  2 之间的字符,算上较小参位置上的字符,超出0————length范围的不要了
+    str.substring();
+    //split(分割符，限定生成数组长度)按某个特定字符把字符串分割并把子串作为数组的元素，输出数组，数组长度由参数2决定
+    str.split();
+    //去除字符串开头和结尾的空格，不去除内部的空格
+    str.trim();
+    //将参数的字符串拼接到str后面
+    str.concat("abc","def")
+    //返回查找字符串的首字符的索引位置 查找字符串不存在返回-1  参数2表示查找的起始位置  从什么位置开始查找
+    str.indexOf();
+    //返回查找字符串最后出现的首字符索引 
+    str.lastIndexOf();
+</script>
+</html>

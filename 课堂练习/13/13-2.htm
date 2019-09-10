@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>对象属性</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var foo = {
+        _x:1,
+        get x(){
+            return this._x;
+        },
+        set x(x)
+        {
+            this._x = x ;
+            //this.y = y ;
+        }
+    }
+    foo.set(10);
+    console.log(foo.get());
+    //访问属性不同方法的区别
+    var o =  {
+        'username':'zhangsan',
+        'age':18
+    }
+    console.log(o.username);
+    console.log(o['username']);
+    var newPro = 'sex';
+    o.newPro = 'girl';//这样添加不成功
+    o[newPro] = 'girl';//可以这样添加属性
+    console.log(o.sex);
+    for(var i in newPro)
+        console.log(o[i])//不能是o.i
+    
+</script>
+</html>

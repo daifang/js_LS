@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>属性的继承</title>
+</head>
+<body>
+</body>
+    <script>
+        //对象属性的继承
+        var o1 = {x:2};
+        var o2 = Object.create(o1);
+        console.log(o2);//o2的__proto__是o1
+        //说明得到的 o2 继承了 o1 的 x:2
+        console.log(o2.x);
+        //输出 o2.x 可以得到 2 ，当对象属性在本身上找不到时，会向它的原型链上去查找，直到找到Object 
+        o2.x = 4;
+        //这个是往 o2 自身上添加x属性
+        //delete 只能删除自身上的属性
+        //想更改原型链上的属性，就要使用__proto__进行操作
+        console.log(o2.x);//4
+
+        console.log(o2);
+        delete o2.x;//删除 x
+        //o2.__proto__ 和 o1 的指向是一样的，改一个就会全部改变
+        o2.__proto__.x = 3;
+        console.log(o1.x);
+        console.log(o2.x);
+    </script>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+
+    function BaseClass(){
+
+    }
+    //静态方法
+    BaseClass.f1 = function(){
+        console.log('I am f1(静态方法)');
+    }
+    //调用静态方法，只能通过类来调用
+    BaseClass.f1();
+    
+    //原型方法，添加在prototype上
+    BaseClass.prototype.f2 = function(){
+        console.log('I am f2(原型方法)');
+    }
+    //调用原型方法
+    var obj = new BaseClass();
+    obj.f2();
+
+    //动态方法
+
+
+
+
+
+
+</script>
+</html>

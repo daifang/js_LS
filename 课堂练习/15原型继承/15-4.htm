@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+
+<script>
+    // car 对象 
+    var car = {
+        height:150,
+        width:200,
+        weight:300
+    }
+    // 方法 一
+    // var smallaCar = Object.create(car);
+    // smallaCar.color = 'red';
+    // smallaCar.seatNum = 007;
+//构造函数方法
+// smallcar 的 __proto__ 指向 create.prototype，所以 直接把car赋给 create.prototype即可
+    function create(co,num){
+        this.color = co;
+        this.seatNum = num;
+    }
+    create.prototype = car;
+    var smallcar = new create('red',007);
+    smallcar.__proto__ = create.prototype;
+    console.log(smallcar.width);
+</script>
+</html>

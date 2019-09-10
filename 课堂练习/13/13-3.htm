@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //------------------------------- 创建对象方法一 --------------------------------
+    var obj = {
+        num:10,
+        str:'Hi',
+        show:function(){
+            console.log(this.str);
+        }
+    }
+    //subObj是obj的子对象，它拥有所有obj拥有的属性
+    var subObj = Object.create(obj);//创建新对象，并把obj的属性当作subObj的__proto__
+    subObj.age = 23;
+    //访问属性如果本身没有需要访问的属性值
+    //就会顺着原型链查找，直到查找到需要的属性
+
+    //------------------------------- 创建对象方法二 --------------------------------
+    //----------------------------构造函数————————实例化-----------------------------
+    function Person(username,age){
+        this.username = username;
+        this.age = age;
+        this.sayHi = function(){
+            console.log(this.username);
+        }
+    }
+    var person1 = new Person('zhangsan',10);
+    var person2 = new Person('lisi',20);
+    person1.sayHi();
+    person2.sayHi();
+    console.log(person1.__proto__ == Person.prototype);//true
+    //对象添加&修改属性值
+    //Object.属性名=XXX; 可以修改可以添加 
+    //Object['属性名'] = XXX;
+    
+    /* var z = 'str';
+    obj[z] = 'lisi';*/
+
+
+    //删除属性
+    delete obj.str;
+
+    
+    var objproto = {
+        z:3
+    }
+    var obj = Object.create(objproto);
+    obj.x = 1;
+    obj.y = 2;
+
+
+    for(var i in obj)
+    {
+        console.log(obj[i]);
+
+    }
+</script>
+</html>

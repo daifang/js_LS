@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>arr.forEach</title>
+</head>
+<body>
+</body>
+<script>
+    var arr = [1,2,3,4,5,6];
+    var brr = [];
+    //forEach 方法 参数: callBack 函数，callBack 对应的是每个数组的元素
+    //callback 函数的参数 value : 数组元素值  index : 索引值  arr : 被操作的数组  thisArg : callback的this指向
+    arr.forEach(function(value,index,arr){
+        console.log('元素值:'+value,'索引:'+index,'数组:'+arr);
+        this[value] = 'x';
+    },brr);
+    console.log(brr);
+</script>
+</html>

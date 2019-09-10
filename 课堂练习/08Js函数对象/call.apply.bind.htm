@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        //函数call方法，更改前面方法的this指向
+        var objA = {"name":"AAA"};
+        var objB = {"name":"BBB"};
+        objA.foo = function (){
+            console.log(this.name);
+        }
+
+        objA.foo.call(objB);//this变成objB
+        objA.foo.call(objA);
+
+        //以下  相当于Java的继承
+        function Student (name,age,sex)
+        {
+            Person.call(this,name,age);
+            this.sex = sex; 
+        }
+        function Person (name,age)
+        {
+            this.name = 'name';
+            this.age = age;
+        }
+        var S1=new Student("zhangso",20,'♂');
+        console.log(S1);
+        console.log();
+
+
+        //《---都是切换this的指向,但有区别---》
+        //apply方法与call方法区别就是后面参数为数组结构
+        //call(this,'a','b','v'.....);
+        //apply(this,['a','b','v'......]);
+        //bind方法   var swim1 = swim.bind(bird,参数1,参数2,参数3);不会立即执行而是先产生一个新的函数
+
+        //高阶函数
+        //函数多层嵌套，this无法穿透，
+        objname = "zs";
+        var obj = {
+            "objname": 'obj1',
+            "show":function(){
+                //var that = this;  可以使用that 来使二级函数里的变量指向obj
+                function fun(){
+                    console.log(this.objname);//嵌套函数（二级函数）里的this不会指向obj,会指向window
+                }
+                console.log(this.objname);//this指向obj
+                fun();
+            }
+        }
+        obj.show();
+
+        console.log(Math.max.apply(obj,[1,2,3,4,5,6])); 
+    </script>
+</body>
+</html>

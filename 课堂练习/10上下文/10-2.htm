@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>作用域链</title>
+</head>
+<body>
+        <div id="a"></div>
+</body>
+<script>
+    //尽量避免全局变量让作用域链尽量短
+    var a = document.getElementById('a');
+    
+    function show (){
+        document.onclick = function(){
+            a.innerHTML = 'hello world';
+    }
+    }
+    show();
+
+    //修改之后
+    var a = document.getElementById('a');
+    //防止变量向上多级查找
+    (function(){
+        function show (a){
+            (d.onclick = function(w,d){
+                a.innerHTML = 'hello world';
+            }(window,document));
+        }
+    }(a));
+</script>
+</html>

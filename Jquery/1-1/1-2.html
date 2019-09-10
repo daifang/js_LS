@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./jquery-3.3.1.min.js"></script>
+</head>
+<body>
+    <table id="one" width="400" height="400" border="1" align="center">
+            <tr class="even">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr class="odd">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr class="even">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr class="odd"> 
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+    </table>
+    <br>
+</body>
+<script>
+    // $(document.body).ready(function(){
+        $('td:first').css({'background-color':'red'});//第一个td
+        $('td:even').css({'background-color':'purple'});//所有偶数列
+        $('td:odd').css({'background-color':'blue'});//所有奇数
+        $('tr:eq(2)').css({'background':'yellow'});// eq : 选择等于括号里的索引值元素
+        $('td:gt(1)').css({'background':'pink'});// gt : 索引值大于括号里的元素
+        $('td:lt(3)').css({'background':'black'});// lt : 索引值 小于括号里的元素
+        $('td:not(td:first)').css({'background':'orange'});//not 排除括号里选择的元素
+        
+    //})
+</script>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //对象 instanceof 构造函数
+        //1 判断对象是否可以使用构造函数实例化得到 可以就是true 不可以 false
+        function Person(name,age){
+            this.name = name;
+            this.age = age;
+        }
+        var person = new Person ("z",20);
+        person instanceof Person; //true
+        console.log(person);
+        console.log(person.__proto__);
+        console.log(person.__proto__==Person.prototype);
+        console.log(person.__proto__.__proto__ == Object.prototype);//true
+
+        //2 length 属性 表示函数形参的个数  argumens表示函数调用时候实参的类数组集合
+        
+        function fn1(){
+            for(var i = 0 ; i < arguments.length ; i++ )
+            {
+                console.log(arguments[i]);
+            }
+            console.log(fn1.length);
+        }
+        fn1(1,2,3);
+
+        function fn2 (){
+            console.log(fn2.caller); 
+        }
+        function fn3(){
+            fn2();
+        }
+        fn3();
+        //匿名函数递归调用
+        var func =  function(n){
+            if(n<0)
+                return 1;
+            else
+                return n * arguments.callee(n - 1);
+        }
+    </script>
+</body>
+</html>

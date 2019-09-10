@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../jquery-3.3.1.min.js"></script>
+    <style>
+        .error{
+            color: red;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>用户名</td>
+            <td><input type="text" id="username"></td>
+        </tr>
+        <tr>
+            <td>密码</td>
+            <td><input type="password"></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="button" value="提交">
+            </td>
+        </tr>
+    </table>
+</body>
+<script>
+    $('#username').blur(function(){
+        var $error = $('<span class = "error">用户名不能为空</span>');//创建一个span节点
+        var inputVal = $(this).val();//获取value值
+        if(inputVal == ''){
+            $(this).parent().append($error);//向this的father里添加 error
+        }
+        else if(inputVal != ''){
+            $('.error').remove();//移除所选
+        }
+    })
+
+    $(':password').blur(function(){
+        var $error1 = $('<span class = "error">密码不能为空</span>');
+        var passwordVal = $(this).val();
+        if(passwordVal == '')
+        {
+            $(this).parent().append($error1);
+        }
+        else{
+            $('.error').remove();
+        }
+    })
+</script>
+</html>

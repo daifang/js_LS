@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/index.css" />
+</head>
+<body>
+        <div class="jsjy_LL" id="picList" style="position:relative;left: 50%;margin-left: -175px;">
+            <div style="position:absolute">
+                <a href="#" target=_blank><img src="./img/1.jpg" class="ysjy_img" width="350px" height="200px" /></a>
+                <p class="jsjy_LL_title">我校召开2018-2020届家长委员会大会</p>
+            </div>
+            <div style="position:absolute">
+                <a href="#" target=_blank><img src="./img/2.jpg" class="ysjy_img" width="350px" height="200px" /></a>
+                <p class="jsjy_LL_title">传递五四精神 铸就青春华章——我校举行纪...</p>
+            </div>
+            <div style="position:absolute">
+                <a href="#" target=_blank><img src="./img/3.png" class="ysjy_img" width="350px" height="200px" /></a>
+                <p class="jsjy_LL_title">2019十大最受欢迎班主任</p>
+            </div>
+            <ul style="position:absolute;" id="itemlist">                
+                <li class="active">
+                    <a href="##">1</a>
+                </li>
+                <li>
+                    <a href="##">2</a>
+                </li>
+                <li>
+                    <a href="##">3</a>
+                </li>
+            </ul>
+        </div>
+</body>
+<script>
+     /*
+        班级: 6
+        学号: 2017011959
+        姓名: 代天放
+        日期: 2019-5-13
+    */
+    //id1:容器，id2:ul liList，time : 轮播间隔时间 
+    (function(w,d){
+    function main(id1,id2,time){
+        this.id1 = id1;
+        this.id2 = id2;
+        this.time = time;
+    }
+    main.prototype.lunBo = function(){
+        var j = 0;
+        var img = d.getElementById(this.id1).getElementsByTagName('div');
+        var ul = d.getElementById(this.id2);
+        var liArray = ul.getElementsByTagName('li');
+        time = this.time;
+        //console.log(this);
+        for(var i = 0;i<liArray.length;i++){
+            //li 底色
+            (function(j){
+                liArray[j].onmouseover = function(){
+                    liArray[j].className = 'active';
+                    img[j].style.display = 'block';
+                    for(let k = 0 ;k < 3 ;k++){
+                        if(k!=j){
+                            liArray[k].className = '';
+                            img[k].style.display = 'none';
+                        }
+                    }
+                }
+            })(i) 
+        }
+        //lunBo
+        var timer = setInterval(function(){
+                                    liArray[j].className = 'active';
+                                    img[j].style.display = 'block';
+                                    for(let k = 0 ;k < 3 ;k++){
+                                        if(k!=j){
+                                            liArray[k].className = '';
+                                            img[k].style.display = 'none';
+                                        }
+                                    }
+                                    j++;
+                                    if(j==3)
+                                        j = 0;},this.time);
+    }
+    w.main = main;
+})(window,document)
+//新建一个轮播对象
+var lunBo = new window.main('picList','itemlist',2000);
+lunBo.lunBo();
+</script>
+</html>

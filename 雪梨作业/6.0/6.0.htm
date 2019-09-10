@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        button {
+            width: 200px;
+            height: 60px;
+            margin: 0 auto;
+            display: block;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">开始计数</button>
+</body>
+<script>
+    let btn = document.getElementById("btn");
+    let count = 0;
+    let intervalId;
+    //方法一
+    // btn.onclick = function(){
+    //     if(intervalId != 0 && intervalId != undefined){
+    //         clearInterval(intervalId);
+    //         intervalId = 0;
+    //     }
+    //     else if(intervalId == undefined || intervalId == 0){
+    //         intervalId = setInterval(() => {
+    //             this.innerHTML = count++;
+    //         }, 1000);
+    //     }
+    // }
+    //例子中 没有点击暂停功能 加个判断条件就行,无法计数是由于setinterval里的this 指向了全局window,把setInterval里的
+    //方法改成箭头函数即可,因为箭头函数不会绑定this,只能从上层作用域去继承this
+    //方法二
+    // btn.onclick = function(){
+    //     if(intervalId != 0 && intervalId != undefined){
+    //         clearInterval(intervalId);
+    //         intervalId = 0;
+    //     }
+    //     else if(intervalId == undefined || intervalId == 0){
+    //         let that = this;
+    //         intervalId = setInterval(function(){
+    //             that.innerHTML = count++;
+    //         },1000);
+    //     }
+    // }
+    //方法三
+    // btn.onclick = function(){
+    //     if(intervalId != 0 && intervalId != undefined){
+    //         clearInterval(intervalId);
+    //         intervalId = 0;
+    //     }
+    //     else if(intervalId == undefined || intervalId == 0){
+    //         intervalId = setInterval(function(){ 
+    //             this.innerHTML = count++;
+    //         }.bind(this),1000);
+    //         console.log(intervalId);
+    //     }
+    // }
+</script>
+</html>

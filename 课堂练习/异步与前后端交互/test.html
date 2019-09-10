@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My Test</title>
+    <link rel="icon" href="./图片1.jpg">
+    <script src="./ku/one.js"></script>
+    <style>
+        #div1{
+            width: 200px;
+            height: 200px;
+            background-color: bisque;
+            position: relative;
+            left: 300px;
+            top: 200px;
+        }
+        #div2{
+            width: 100px;
+            height: 100px;
+            background-color: aqua;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1">
+        <div id="div2"><a href="http://baidu.com" id="baidu">百度</a></div>
+    </div>
+</body>
+<script>
+    //事件冒泡,自下而上的触发,当参数为true时 会优先执行，当都有true时 为按节点顺序，由外到内
+    //target 得到的是 节点内部最底层的DOM对象
+    //都是 false 时 会由内而外触发 
+    
+        
+        document.getElementById('div1').addEventListener('click',function(){
+            event.stopPropagation();//阻止捕获，外层写
+            console.log(event.target);
+            console.log(event.currentTarget);//获取当前触发事件的DOM对象
+            console.log(1);
+        },false);
+        document.getElementById('div2').addEventListener('click',function(){
+            event.stopPropagation();
+            console.log(event.target);//阻止冒泡，内层写
+            console.log(2);
+        },false);
+        document.getElementById('baidu').addEventListener('click',function(){
+            event.preventDefault();//阻止元素默认操作 
+        });;  
+</script>
+</html>

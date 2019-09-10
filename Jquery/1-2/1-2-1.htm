@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../jquery-3.3.1.min.js"></script>
+</head>
+<body>
+    <table>
+        <tr>
+            
+            <td>
+                <input type="text" name="username" id="username" placeholder="用户名">
+                <span class="error"></span>
+            </td> 
+        </tr>
+        <tr>
+            <td>
+                <input type="password" name="pass" id="password" placeholder="密码">
+            </td>
+        </tr>
+        <tr>
+            <td><input type="button" value="提交"></td>
+        </tr>
+    </table>
+</body>
+<script>
+    $(document.body).ready(
+        $('#username').blur(
+            function(){
+                var nameVal = $(this).val();
+                if(nameVal == ''){
+                    //html 与  innerHTML 功能一样
+                    $('.error').html('用户名不能空').css({'color':'red','font-size':'10px','opacity':'0'}).animate({opacity:1,fontSize:15},500);
+                }
+            }
+        )    
+    )
+</script>
+</html>

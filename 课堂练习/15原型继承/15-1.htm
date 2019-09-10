@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var obj = {x:1};
+    // console.log(obj.__proto__ == Object.prototype);//true
+    // console.log(obj.__proto__);
+    // console.log(obj.__proto__.__proto__);//null
+    // console.log(Object.__proto__);//ƒ () { [native code] }
+    var obj2 = Object.create(obj);
+    console.log("obj2.__proto__: "+obj2.__proto__);
+    // console.log("obj2.__proto__.__proto__: "+obj2.__proto__.__proto__);
+    // console.log("obj2.__proto__.__proto__.__proto__: "+obj2.__proto__.__proto__.__proto__);
+    console.log(obj2.__proto__ == obj);
+    console.log(obj);
+    console.log(obj2.__proto__);
+
+    var proObj = {z:3}
+    var obj = Object.create(proObj);
+    obj.x = 1;
+    obj.y = 2;
+    // console.log(obj.x);
+    // console.log(obj.y);
+    // console.log(obj.z);
+    // console.log("z in obj?  "+("z" in obj));
+    // console.log(obj.hasOwnProperty('z'));
+</script>
+</html>

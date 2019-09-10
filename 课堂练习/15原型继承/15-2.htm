@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+ var obj = {x : 1};
+ //hasOwnProperty 和 in 运算符不同 ，该方法会忽略掉那些从原型链上继承到的属性。
+ //in 是自身或原型链上有 该属性就会true
+ var newobj = Object.create(obj);
+
+ console.log(obj.hasOwnProperty('x') , newobj.hasOwnProperty('x'),'x' in obj,'x' in newobj);
+
+
+</script>
+</html>

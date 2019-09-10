@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="css/tab.css">
+	
+</head>
+<body>
+	<div class="logincontainer" id="logincontainer" style="margin: 0 auto;">
+		<div class="tabtitle">
+			<div class="login-tab saomalogin active">扫码登录</div>
+			<div class="login-tab userlogin">帐户登录</div>
+		</div>
+		<div class="tab-item">
+			<img src="img/show.png">
+		</div>
+		<div class="tab-item" style="display: none;">
+			<div class="inputcontainer">
+				<label for="loginname" class="login-label"></label>
+				<input id="loginname" type="text" class="itxt" name="loginname" tabindex="1" autocomplete="off" placeholder="邮箱/用户名/已验证手机">
+			</div>
+			<div class="inputcontainer">
+				<label for="loginname" class="login-label pwd"></label>
+				<input id="pwd" type="text" class="itxt" name="pwd" tabindex="1" autocomplete="off" placeholder="密码">
+			</div>
+			<div class="loginbtn">
+				<a href="javascript:;" class="btn-img btn-entry" id="loginsubmit" tabindex="6" clstag="pageclick|keycount|201607144|3" style="outline: rgb(109, 109, 109) none 0px;">登&nbsp;&nbsp;&nbsp;&nbsp;录</a>
+			</div>
+		</div>
+	</div>
+</body>
+<script>
+	/*
+	*	姓名:   代天放
+	*	任务:     三
+	*	班级:     6班
+	*	日期:  2019-4-7
+	*	学号: 2017011959
+	*/
+	//错误一，document没有变局部变量
+	//这道题没用window，可以省略
+	//把document,window对象变成局部对象，就不用每次都向上层查找document对象进而提高效率
+	(function(dc,win){
+		var a = dc.getElementsByClassName('tab-item');
+		var b = dc.getElementsByClassName('login-tab');
+		var c = dc.getElementsByClassName('itxt');
+		//鼠标滑过导航栏事件
+		for(var i = 0;i < b.length;i++)
+		{
+			if(a && b){
+				(function(j){
+					b[j].onmouseover = function(){
+						for(let k = 0;k < b.length;k++)
+						{
+							//改进一
+							//这句话效果可以用classlist.remove() 的方法直接实现 不用使用麻烦的字符串方法
+							//b[k].className = 'login-tab'+' '+b[k].className.split(' ')[1];
+							b[k].classList.remove('active');
+							a[k].style.display = 'none';
+						}
+						//这句话同上 classlist.add()方法直接实现
+						//b[j].className += ' active';
+						b[j].classList.add('active');
+						a[j].style.display = 'block';
+						console.log(j);
+					}
+				})(i)
+			}
+		}
+		//判断是否为空
+		for(var i = 0;i < c.length; i++)
+		{
+			(function(j){
+				c[j].onblur = function(){
+					if(c[j].value == '')
+					{
+						if(j == 0)
+							alert('用户名不能为空');
+						if(j == 1)
+							alert('密码不能为空');
+					}
+				}
+			})(i)
+		}
+	})(document,window)//局部document
+</script>
+</html>

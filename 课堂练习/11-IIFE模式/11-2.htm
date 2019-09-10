@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //打印结果都是10，改正：把var  用let代替
+    var getNum = [];
+function f(){
+
+    for(var /*let*/ i = 0;i<10;i++)//使用let之后就可以正常打印1~9了
+    {
+        getNum[i] = function()
+                    {
+                        return i ;//getNum[0~8]共用一个变量，当循环结束时候它最后是几，数组里所有东西就是几
+                    }
+    }
+    return getNum;
+}
+ f();
+
+ //控制台打印
+ console.log('变量共享');
+for(var i = 0 ; i<10;i++)
+{
+    console.log(getNum[i]());
+}
+
+/*=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=修改之后=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
+
+var arr = [];
+function F1(){
+    for(var i = 0;i<10;i++)//使用let之后就可以正常打印1~9了，let 是ES6中新添加的声明符，
+                            //let 是块级声明  var改成let 之后  每个i的作用域都是独立的，所以也可以达到预期输出的效果
+    {
+        //立即执行IIFE，每个I值都给它一个独自的作用域
+        (function (j){
+            arr[j] = function()
+                    {
+                        return j ;//就相当于把arr[0~8]区别开了
+                    }
+        })(i);
+    }
+    return arr;
+}
+ F1();
+ //控制台打印
+ console.log('修改之后的:');
+for(var i = 0 ; i<10;i++)
+{
+    console.log(arr[i]());
+}
+</script>
+</html>

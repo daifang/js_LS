@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var str = '1 1 1 1 1 1';
+    function th(){
+        console.log(''.split.call(str,' '));
+        
+        return this;
+    }
+    th();
+
+    var obj = {
+        name:'A',
+        age:10,
+        fun:function(){
+            console.log(this.name);
+        }
+}
+var obj2 = {
+    name : 'B',
+    age:12,
+    fun1:function(){
+        console.log(this.age);
+    }
+}
+obj.fun.call(obj2);
+</script>
+</html>

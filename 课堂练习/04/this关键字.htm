@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>This关键字</title>
+</head>
+<body>
+    <script>
+        //普通函数里面，this指向全局对象，window（非严格模式）
+        function T(){
+            console.log(this);
+        }    
+        T();
+        //严格模式下,undefined
+        function Y(){
+            'use strict'
+            console.log(this);
+        }
+        Y();
+        //全局变量在window对象上
+        var a = 1;
+
+
+        //用this判断当前是不是严格模式
+        function X(){
+            var result = (this === undefined?true:false);
+            return result;
+        }
+        if(X())
+        {
+            console.log("严格模式")
+        }
+        else
+        {
+            console.log("非严格模式")
+        }
+
+        //对象内部this，指向自己
+        var obj = {
+            x:0,
+            test:function(){console.log(this)}
+        }
+        obj.test();
+    </script>
+</body>
+</html>

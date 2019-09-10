@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function Person(name,age){
+        this.name = name;
+        this.age = age;
+    }
+    Person.prototype.show = function(){console.log(this.name,this.age,this.id)}
+    function Student(id,name,age){
+        Person.call(this,name,age);
+        this.id = id;
+    }
+    console.log(Student.prototype);
+    console.log(Student.prototype.__proto__);
+    console.log();
+    Student.prototype.__proto__ = Person.prototype; //如果直接prototype = prototype 创建对象时 就会把父类的属性值同时修改所以要用__proto__进行继承
+    var s1 = new Student(10086,'10086',10086);
+    var s2 = new Student(10085,'10085',10085);
+    console.log(s1,s2);
+    s1.show();
+</script>
+</html>

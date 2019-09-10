@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function Animal(name , weight){
+        this.name = name;
+        this.weight = weight;
+    }
+    Animal.prototype.run = function(){console.log(this.name +' '+ '能 跑')}
+    function Bird(name,weight,color,height){
+        Animal.call(this,name,weight);
+        this.color = color;
+        this.height = height;
+    }
+    console.log(Bird.__proto__);
+    //Bird.__proto__ = Animal.prototype;
+    console.log(Bird.prototype);
+    console.log(Animal.prototype.constructor);
+    Bird.prototype.__proto__ = Animal.prototype;
+    //Bird.prototype = Object.create(Animal.prototype);
+    //当Bird.prototype上拥有自己的方法时 不能直接 覆盖
+    //这样会导致 Bird 上自己的方法被抹杀，所以要用__proto__进行继承
+    var bird = new Bird('麻雀',40,'黑黄',30);
+    //bird.run();
+    console.log(bird);
+    var bird1 = new Bird('喜鹊',40,'黑白',30);
+    console.log(bird1);
+    //bird1.run();
+    // Bird.prototype.constructor = Animal;
+    console.log(Bird.prototype);
+    console.log(bird1.constructor);
+    console.log(Bird);
+</script>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //ES5  ECMAScript 5.0 是一个语言标准JavaScript是完全基于ECMAScript实现的脚本语言
+        //当前主流版本5和6
+        //ES5 无块级作用域
+        // if(true)
+        // {
+        //     var username="zhangsan";//提前声明，然后再赋值
+        // }
+        // console.log(username);
+        var str = 'abcde';
+        for(var i=0;i<3;i++)
+        {
+            console.log(i);
+        }
+
+        document.write(i);//打印3
+
+        //非严格模式,不用 var 变量自动转化为全局变量
+        function fun(){
+            username='zhangsan';
+        }
+        fun();
+        console.log(username);
+
+        //严格模式，不用 var 报错 下面例子是定义的局部变量
+        function fun1(){
+            'use strict'
+            var username1='zhangsan';
+        } 
+        fun1();
+        //console.log(username1);//局部变量无法访问到，会报错
+        
+
+        //非严格模式,不会报错，但是无法改变length的值
+        function B(){
+            str.length=1;
+            console.log(str.length);
+        }
+        //严格模式下，会报错
+        function A(){
+            'use strict'
+            str.length=1;
+            console.log(str.length);
+        }
+        B();
+        A();
+        //严格模式下函数参数不能重名
+    </script>
+</body>
+</html>

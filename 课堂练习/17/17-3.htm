@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" name="username" id="username">
+</body>
+
+<script>
+    (function(win,doc){
+        function Input(inputId){
+            this._init(inputId);
+            this._effect();
+        }
+        Input.prototype._init = function(inputId){
+            var InputObject = doc.getElementById(inputId);
+            this.InputObject = InputObject;
+        }
+        Input.prototype._effect = function(){
+            this.InputObject.onblur = function(){
+                console.log('失去 焦点');
+            }
+            this.InputObject.onfocus = function(){
+                console.log('获取 焦点');
+            }
+        }
+        win.Input = Input;//此时 Input 就到了 window对象里
+    })(window,document);
+
+
+    var input1 = new Input('username');
+    input1._init('username');
+    input1._effect();
+</script>
+</html>

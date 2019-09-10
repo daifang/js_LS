@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //设置函数参数默认值(ES5)
+    function sum (x,y,z){
+        //x=x || 1;//功能相当于 var x = 1;只要x，y，z是假 就会变成1，2，3
+        //y=y || 2;//要想计算0+0+0，就先判断一下
+        //z=z || 3;
+        if(x!=false)
+        {
+            x=x || 1;
+        }
+        if(y!=false)
+        {
+            y=y || 2;
+        }
+        if(z!=false)
+        {
+            z=z || 3;
+        }
+        console.log(x,y,z);
+        return x+y+z;
+    }
+
+
+    //ES6,实现设置函数参数默认值
+    function fun (x=1,y=2,z=3){
+        return x+y+z;
+    }
+
+
+    console.log(sum(0,0,0));
+    console.log(fun(0,0,0));
+</script>
+</html>

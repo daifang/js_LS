@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+</body>
+<script>
+    /*
+        正则表达式: / 正则表达式文本 / 标识符(补充说明规则)
+        i  代表忽略大小写
+        [xyz]  从括号里任意选一个
+        g  g去掉只显示第一个匹配的信息
+    */
+    var reg1 = /[bcf]at/gi;
+    var str = 'bat cat fat Fat difijfi';
+    console.log(reg1.test(str));//有符合条件的就返回true
+    console.log(str.match(reg1));//检测字符串 里符合正则表达式的，并返回一个数组结构
+
+    var reg2 = new RegExp(/[bcf]at/,'gi');
+    var reg3 = new RegExp('[bcf]at','gi');
+</script>
+</html>

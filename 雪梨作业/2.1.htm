@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var arr = ["           hello world    ",true,false,1.568,5,"  6666 "];
+    function working(arr){
+        var brr = [];
+        var i;
+        for(var i = 0 ; i<arr.length; i++)
+        {
+            switch(typeof(arr[i])){
+                case "string":{
+                    brr[i] = arr[i].trim();
+                    break;
+                }
+                case "boolean":{
+                    brr[i] = Number(arr[i]);
+                    break; 
+                }
+                case "number":{
+                    brr[i] = arr[i].toFixed(2);
+                }
+            }
+        }
+
+        for(i = 0 ; i < brr.length ; i++)
+        {
+            console.log(brr[i]);
+        }
+        console.log(brr);
+    }
+    working(arr);
+    
+</script>
+</html>

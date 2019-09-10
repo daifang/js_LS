@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>短路原则</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //*《-----&&-----》*//
+    //左真取右
+    console.log(10 && 0);
+    //左假取左
+    console.log(undefined && 10);
+
+    //*《-----||-----》*//
+    //左真取左
+    console.log(10 || 0);
+    //左假取右
+    console.log(undefined || 10);
+    
+
+    /*===《应用》===*/
+
+    function grade(a){
+        console.log((a>=90 && 'A') || (a>=70 && 'B') || (a>=60 && 'C') || (a<60 && 'D'));
+    }
+
+    function grade1(a){
+        switch(true)
+    {
+        case a >= 90:
+        {    console.log('A');
+            break;
+        }
+        case a >= 80:
+        {
+            console.log('B');
+            break;
+        }
+        case a >= 70:
+        {
+            console.log('C');
+            break;
+        }
+        case a >= 60:
+        {
+            console.log('D');
+            break;
+        }
+        default:
+        {
+            console.log("F");
+        }
+    }
+    }
+    
+</script>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <img src="" alt="">
+    <span id="title"></span>
+    <input type="button" value="请求" id="but">
+</body>
+<script src="../../Jquery/jquery-3.3.1.min.js"></script>
+<script>
+    (function($){
+        $('#but').click(function(){
+            $.ajax({
+                url:"./php/1-1.php",
+                type:"get",
+                success:function(data){
+                    $('#title').html(data);
+                },
+                error:function(err){
+                    alert(err);
+                }         
+            })
+        })
+    })(jQuery)
+</script>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="ul">
+
+    </ul>
+</body>
+<script>
+    var arr = [{'title':'Are you OK?'},{'title':'Hello'},{'title':'Thank you'}];
+    for(var i = 0;i<arr.length;i++)
+    {
+        var liNode = document.createElement('li');
+        liNode.innerHTML = arr[i]['title'];
+        var ul = document.getElementById('ul');
+        ul.appendChild(liNode);
+    }
+    //把 对象 或 数组转化成字符串格式
+    var jsonStr = JSON.stringify(arr);
+    console.log(jsonStr);
+    console.log(typeof jsonStr);
+    //将转化成 JSON 的 对象 或 数组 转化回 JSON
+    var jsonObj = JSON.parse(jsonStr);
+    console.log(jsonObj);
+    console.log(typeof jsonObj);
+</script>
+
+<script>
+    var jsonObject = {
+        "username":'zhangsan',
+        'age':20,
+        'address':{
+            'name':'大不列颠',
+            'position':'幸福大道 2 栋 3 层 3号'
+        },
+        'word':'233'
+    }
+    var jsonStr = JSON.stringify(jsonObject,function(k,value){
+        if(typeof value == 'number')
+        {
+            return undefined;
+        }
+        return value;
+    });
+    console.log( jsonStr);
+
+</script>
+</html>

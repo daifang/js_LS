@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var reg = /abc/gi;
+    var str = 'abcdefg';
+    str.replace(reg,'x');//replace  非毁灭性
+    /*
+        字符分类
+            *   \d:匹配 阿拉伯数字
+            *   \D:取反义,不匹配 阿拉伯数字
+            *   \w:匹配   单字符
+            *   \W:匹配非 单字符
+            *   \s：匹配空格，space 或 制表符
+            *   \S:不匹配空格
+            *   [0-9] 匹配 0-9
+            *   [^0-9] 不匹配 0-9
+            *   ^a 以a开头
+            *   a$ 以a结尾
+            *   a* 匹配前面字符0次或多次
+            *   a{n} 匹配前面字符 n次
+            *   a? 匹配出现0次或出现1次
+            *   a+ 表示 a 出现1次或多次
+            *   p(m,n) 表示p出现次数在 m n 之间
+            *   .表示任意单个字符
+    */
+    var reg1 = /a\d/gi;//匹配数字 + a
+    var str = 'abcda5';
+    console.log(str.replace(reg1,'x'));
+
+    var reg2 = /\sa\d/gi;
+    console.log(' abcd a5'.replace(reg2,'x'));
+
+    var reg3 = /[abc]\d/gi;
+    console.log('ab2 a2 d2s5sssac6'.replace(reg3,'x'));
+
+    var reg4 = /[abc][0-9]/gi;//
+    console.log('ac5d7'.replace(reg4,'x'));
+
+    var reg5 = /\d[a-f]\s/gi;
+    console.log('5cc 9a '.replace(reg5,'1'));
+
+    var reg6 =/^a\d/gi;
+    console.log('a6b cd ef'.replace(reg6,'x'));
+
+    var reg7 = /[a?bc]/gi;
+    console.log('abcdaeaacafaw'.replace(reg7,'x'));
+
+    /*
+        密码
+    */
+</script>
+</html>

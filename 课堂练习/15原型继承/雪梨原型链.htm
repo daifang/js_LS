@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+
+<script>
+    //prototype 函数 独有 
+    // __proto__ 万物皆有
+    //-----------------<关系一>----------------------
+    function Foo(name,age)
+    {
+        this.age = age;
+        this.name = name;
+    }
+    Foo.prototype.sayHello = function(){
+        console.log(this.name + 'hello');
+    }
+    //f1 是通过构造函数 foo 实例化得到的，所以它的__proto__指向foo的protytype,而
+    //foo的prototype拥有sayhello方法 所以可以调用，当本身没有需要调用的方法时，会向上
+    //顺着原型链查找，直到找到对应的东西
+    //f1的原型就是Foo，而对象的原型就是它的__proto__
+    var f1 = new Foo('lisi',20);
+
+    console.log(f1.__proto__ == Foo.prototype);//true
+
+
+    //------------------ <关系二> ------------------------
+    //Foo是一个对象，原型链的顶端都是Object，__proto__指向‘父对象’的prototype
+    //所以下面结果为true
+    console.log(Foo.prototype.__proto__ == Object.prototype);//true
+
+
+    //------------------ <关系三> ------------------------
+    //所有的对象顶端都有Object,到了Object也就到了原型链的尽头，再向上__proto__就会是null
+    //可以理解成从自己这一代向上找个几代就什么都找不到了
+    console.log(Object.prototype.__proto__ == null);//true
+
+
+    //------------------ <关系四> --------------------
+    //function Foo(...){...}是个构造函数，实例原型是Foo.prototype
+    console.log(Foo.prototype);
+
+
+    //------------------<关系五>--------------------
+    //constructor对象代表构造该对象的构造器,Foo.prototype是Foo的
+    //Foo.prototype是Foo的实例原型
+    //一个对象的constructor 指向它的构造函数
+    //当想构造一个一样的新对象时就可以使用constructor
+    console.log(f1.__proto__.constructor == Foo);
+    var f2 = new f1.__proto__.constructor('zhangsan',18);
+    //console.log(f2);
+    console.log(Foo.prototype.constructor == Foo);
+
+
+    //------------------<关系六>-----------------------
+    //Foo是Function 创造的 所以Foo的constructor 就是Function
+    console.log(Foo.constructor == Function);
+    //Foo.__proto__ 就像前面的 f1.__proto__ 指向 Foo.prototype一样
+    console.log(Foo.__proto__ == Function.prototype);
+
+
+    //------------------<关系七>-------------------------
+    //所有对象的顶层是Object，也就相当于 Object 是 万物之源
+    //而 单纯的 Object 是无法创建的,  Object 在创建万物时会
+    //参照一个模板，比如女娲造人，都是一个头俩胳膊俩腿。这个模板
+    //就是prototype 这个模板的影子会刻在 后代的 prototype.__proto__当中
+    //函数对象 就是 prototype.__proto__,其他对象直接__proto__
+    //因为 prototype是函数独有的
+    console.log(Function.prototype.__proto__ == Object.prototype);
+
+
+    //------------------<关系八>--------------------------
+    //和 f1 与 Foo 关系一样 ， o1 是Object的实例化，Object.prototype的影子
+    //自然就会出现在o1.__proto__中了
+    var o1 = new Object();
+    console.log(o1.__proto__ == Object.prototype);
+
+    //——------------------<关系九>-------------------------
+    //对比之前的 Foo()的实例原型 与Foo.prototype
+    console.log(Foo.prototype);
+
+
+    //----------------------<关系十>-----------------------
+    //Object 的实例原型可以理解成一个 实例化 的Object对象，既然是
+    //实例化的 它的 constructor 就是构造它的函数
+    console.log(Object.prototype.constructor == Object);
+
+
+    //-----------------------<关系十一>--------------------------
+    //Object() 不管它叫什么 它本身是个 构造函数对象  ，是函数对象 就是来自 Function
+    //所以它继承了  Function.prototype
+    console.log(Object.__proto__ == Function.prototype);
+
+
+    //-------------------------<关系十二>----------------------------
+    //Function()构造函数也是 Function.prototype 实例原型
+    console.log(Function.prototype == Function.prototype);
+
+    //-------------------------<关系十三>---------------------------
+    //Function.prototype 是Function()构造来的，所以它的constructor 是
+    //Function
+    console.log(Function.prototype.constructor == Function);
+
+
+    //------------------------<关系十四>-----------------------------
+    //Function 是个特殊的对象
+    //拥有生产模板的Function，Function可以创造全部对象，包括自己
+    //所以 Function 的 __proto__指向 Function.prototype
+    console.log(Function.__proto__);
+    console.log(Function.prototype);
+    console.log(Function.__proto__ == Function.prototype);
+</script>
+</html>

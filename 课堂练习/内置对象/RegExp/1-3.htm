@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+
+<script>
+    var reg = /(((s)s)\d)a/gi;
+    /*
+        括号里的 表示 当前表达式的一个子规则
+    */
+    //返回一个数组，第一个元素是 ss\da,第二个元素是 括号里的子规则,第三个就是 括号里的子规则，依次往后
+    var str = 'ss1as';
+    console.log(reg.exec(str));//执行一次正则匹配，并返回 一个数组 失败 null index 表示匹配的起始索引
+    console.log(reg.test(str));//检测 是否匹配成功 ，成功 true  失败 false
+
+    //\1表示 \1的位置引用 前面的第一个子规则
+    var reg1  = /(\dss)a\1/gi;
+    // var reg1 = /(\dss)a(\dss)a/gi;
+    var str1 = '5ssa5ssjlkashf';
+    var str2 = str1.replace(reg1,'x');
+    console.log(str2);
+    //match 把匹配的字符 输出出来  在数组中显示，匹配失败  null
+    var str3 = str1.match(reg1,'x');
+    console.log(str3);
+    //str.search();返回 匹配位置的起始索引
+    console.log();
+
+
+</script>
+</html>

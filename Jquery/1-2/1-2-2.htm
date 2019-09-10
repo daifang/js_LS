@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../jquery-3.3.1.min.js"></script>
+</head>
+<body>
+    <img src="../1-1/img/ray.jpg" id="img" style="width: 200px" title="">
+    <input type="button" id="but" value="更换">
+    <input type="button" id="del" value="删除">
+</body>
+<script>
+    $('#but').click(function(){
+        var arr = ['../1-1/img/ray.jpg','../1-1/img/2.jpg'];
+        var a = 0;
+        var str = $('#img').attr('src');
+        if(str.charAt(11) == 'r')
+            a = 1;
+        else
+            a = 0;
+        $('#img').attr('src',arr[a]).attr('title','图片');
+    })
+    $('#del').click(function(){
+        $('#img').removeAttr('title');
+        $('#img').remove();
+    })
+</script>
+</html>

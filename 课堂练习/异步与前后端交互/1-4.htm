@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AJAX</title>
+    <script src="../../Jquery/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+    <span id="title"></span>
+    <input type="button" value="请求" id="but">
+</body>
+<script>
+    (function($){
+        $('#but').click(function(){
+            // $.get 向指定地址的服务端 发出 get 请求
+            // 后端程序接收到请求，响应了一个字符串
+            // 字符串会传到 data中
+            // 将网页文件和后端程序文件 放到服务器上
+            // wampserver
+            $.get('./php/1-1.php',function(data){$('#title').html(data);console.log(data);});
+        })
+        
+    })(jQuery)
+</script>
+</html>
