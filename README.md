@@ -6,7 +6,8 @@
 ### 最近学习的React使用了大量的ES6知识
 
 ## PS:仅收集最近使用的知识，不代表所有ES6知识
-
+* ### ES6内部使用 ===
+* 
 # 第二章(let | const)
 
 # 块级作用域
@@ -93,6 +94,10 @@ let [a,b,c = 0] = [1,2,undefined];//设置默认值
 let [a,b,c = 0] = [1,2,null];//设置默认值
 // c === 0  false
 //c === null true
+
+let [...a,b] = [1,2,3,4,5];
+//a-->[1,2,3,4]
+//b-->5
 ```
 
 ## 对象
@@ -126,7 +131,7 @@ let {foo:bar} = {foo:"a",bar:"b"};
 let x = 1,y = 2;
 [x,y] = [y,x];
 ```
-*提取JSON
+* 提取JSON
 ```
  let data = {name:"dtf",age:20,sex:"man",number:[1,2,3]};
 
@@ -210,4 +215,4 @@ let t = Symbol();
                 }
             }
         ```
-    *
+    * 
