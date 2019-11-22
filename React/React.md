@@ -1,3 +1,2 @@
 # `React`
-## 点击下方
-[新地址](https://github.com/daifang/React)
+[地址](https://github.com/daifang/React)
