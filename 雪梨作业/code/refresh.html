@@ -61,7 +61,6 @@
                     isRefresh = true;
                 }
                 let height = touchMove - touchStart > 100? 100 : touchMove - touchStart;
-                
                 if(isRefresh && touchMove - touchStart >= 100) {
                     msg.innerHTML = '松手刷新';
                 }
@@ -86,6 +85,7 @@
             }
             container.onscroll = (e) => {
                 scroll = e.target.scrollTop
+                // console.log(scroll, touchMove, touchStart, isRefresh);
                 if(scroll > 0) {
                     isRefresh = false;
                 }
@@ -97,7 +97,6 @@
                 }
                 return color;
             }
-
             function refresh () {
                 let div = document.createElement('div');
                 div.style.width = '90%';
