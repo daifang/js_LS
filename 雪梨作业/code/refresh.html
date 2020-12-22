@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>下拉刷新</title>
+    <style>
+        body,html{
+            height: 100%;
+            width: 100%;
+            padding: 0;
+            margin: 0 auto;
+            overflow: hidden;
+            background-color: rgb(235, 235, 235);
+        }
+        #container{
+            width: 100%;
+            height: 100%;
+            overflow-y: scroll;
+            /* padding: 2%; */
+            overflow-x: hidden;
+        }
+        #body{
+            width: 100%;
+            min-height: 110%;
+            background-image: linear-gradient(to bottom,rgb(221, 244, 255),rgb(255, 255, 255));
+            padding-top: 10px;
+        }
+        #msg {
+            text-align:center;
+            /* display: none; */
+            background-color: rgba(0, 102, 255, 0.308);
+            color:rgb(255, 255, 255);
+            overflow: hidden;
+            height: 0;
+            border-radius: 0px 0px 100px 100px;
+            /* transition:ease-in 0.2s; */
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="msg">松手加载...</div>
+        <div id="body"></div>
+    </div>
+    <script>
+        (function(w,d){
+            var container = document.getElementById('container');
+            var refreshBody = document.getElementById('body');
+            var msg = document.getElementById('msg');
+            var isRefresh = true;
+            var touchStart, touchMove, scroll = 0;
+            container.ontouchstart = (e)=>{
+                touchStart = e.targetTouches[0].pageY
+                msg.style.transition = ''
+            }
+            container.ontouchmove = (e)=>{
+                touchMove = e.targetTouches[0].clientY;
+                if(scroll == 0 && !isRefresh) {
+                    touchStart = touchMove;
+                    isRefresh = true;
+                }
+                let height = touchMove - touchStart > 100? 100 : touchMove - touchStart;
+                if(isRefresh && touchMove - touchStart >= 100) {
+                    msg.innerHTML = '松手加载';
+                }
+                if(isRefresh && touchMove - touchStart < 100) {
+                    msg.innerHTML = '取消加载';
+                    msg.style.height =  height + 'px';
+                    msg.style.lineHeight = height + 'px';
+                    msg.style.backgroundColor = ` rgba(0, ${0 + height}, 255, ${0.3 + (height-50)/100})`;
+                }
+            }
+            container.ontouchend = (e)=>{
+                if(isRefresh && touchMove - touchStart >= 100) {
+                    let div = refresh();
+                    loading();
+                    setTimeout(function(){
+                        init();
+                        refreshBody.append(div);
+                    },1000);
+                }else{
+                    init();
+                }
+            }
+            container.onscroll = (e) => {
+                scroll = e.target.scrollTop
+                if(scroll > 0) {
+                    isRefresh = false;
+                }
+            }
+            function createColor () {
+                let color = '#';
+                for(let i = 0; i < 6; i++) {
+                    color += Math.floor(Math.random()*10);
+                }
+                return color;
+            }
+
+            function refresh () {
+                let div = document.createElement('div');
+                div.style.width = '90%';
+                div.style.marginLeft = '5%';
+                div.style.marginTop = '10px';
+                div.style.height = '30px';
+                div.style.backgroundColor = createColor();
+                div.style.borderRadius = '5px';
+                return div;
+            }
+            function init () {
+                msg.style.transition = 'ease-in 0.1s';
+                msg.style.height =  '0px';
+                msg.style.lineHeight = '0px';
+                msg.innerHTML = '';
+                touchMove = 0;
+                touchStart = 0;
+            }
+            function loading () {
+                msg.style.transition = 'ease-in 0.1s';
+                msg.style.height =  '50px';
+                msg.style.lineHeight = '50px';
+                msg.innerHTML = '加载中...'
+            }
+        })(window,document)
+    </script>
+</body>
+</html>
