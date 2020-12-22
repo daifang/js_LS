@@ -61,11 +61,12 @@
                     isRefresh = true;
                 }
                 let height = touchMove - touchStart > 100? 100 : touchMove - touchStart;
+                
                 if(isRefresh && touchMove - touchStart >= 100) {
-                    msg.innerHTML = '松手加载';
+                    msg.innerHTML = '松手刷新';
                 }
                 if(isRefresh && touchMove - touchStart < 100) {
-                    msg.innerHTML = '取消加载';
+                    msg.innerHTML = '继续下拉';
                     msg.style.height =  height + 'px';
                     msg.style.lineHeight = height + 'px';
                     msg.style.backgroundColor = ` rgba(0, ${0 + height}, 255, ${0.3 + (height-50)/100})`;
@@ -119,7 +120,7 @@
                 msg.style.transition = 'ease-in 0.1s';
                 msg.style.height =  '50px';
                 msg.style.lineHeight = '50px';
-                msg.innerHTML = '加载中...'
+                msg.innerHTML = '稍等...'
             }
         })(window,document)
     </script>
