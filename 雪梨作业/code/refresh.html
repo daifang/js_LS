@@ -48,7 +48,7 @@
             var container = document.getElementById('container');
             var refreshBody = document.getElementById('body');
             var msg = document.getElementById('msg');
-            var isRefresh = true;
+            var isRefresh = false;
             var touchStart, touchMove, scroll = 0;
             container.ontouchstart = (e)=>{
                 touchStart = e.targetTouches[0].pageY
@@ -87,7 +87,6 @@
             }
             container.onscroll = (e) => {
                 scroll = e.target.scrollTop
-                // console.log(scroll, touchMove, touchStart, isRefresh);
                 if(scroll > 0) {
                     isRefresh = false;
                 }
@@ -115,6 +114,7 @@
                 msg.style.lineHeight = '0px';
                 msg.innerHTML = '';
                 touchMove = 0;
+                isRefresh = false;
                 touchStart = 0;
             }
             function loading () {
