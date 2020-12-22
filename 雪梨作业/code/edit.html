@@ -52,13 +52,22 @@
         <div class="edit" contenteditable>
         </div>
         <div class="tools">
-            <div>①</div>
+            <div>h1</div>
+            <div>h2</div>
+            <div>h3</div>
+            <div>h4</div>
+            <div>h5</div>
+            <div>p</div>
+            <div>img</div>
         </div>
     </div>
     <script>
         (function(d,w){
-            function Edit(){
-
+            w.onload = (e)=>{
+                let children = d.getElementsByClassName('tools')[0].children;
+                for(let i = 0; i < children.length; i++) {
+                    
+                }
             }
         })(document,window)
     </script>

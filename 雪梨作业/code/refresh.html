@@ -57,15 +57,16 @@
             container.ontouchmove = (e)=>{
                 touchMove = e.targetTouches[0].clientY;
                 if(scroll == 0 && !isRefresh) {
-                    e.preventDefault();
                     touchStart = touchMove;
                     isRefresh = true;
                 }
                 let height = touchMove - touchStart > 100? 100 : touchMove - touchStart;
                 if(isRefresh && touchMove - touchStart >= 100) {
+                    e.preventDefault();
                     msg.innerHTML = '松手刷新';
                 }
                 if(isRefresh && touchMove - touchStart < 100) {
+                    e.preventDefault();
                     msg.innerHTML = '继续下拉';
                     msg.style.height =  height + 'px';
                     msg.style.lineHeight = height + 'px';
