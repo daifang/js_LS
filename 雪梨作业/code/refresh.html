@@ -57,6 +57,7 @@
             container.ontouchmove = (e)=>{
                 touchMove = e.targetTouches[0].clientY;
                 if(scroll == 0 && !isRefresh) {
+                    e.preventDefault();
                     touchStart = touchMove;
                     isRefresh = true;
                 }
